@@ -18,12 +18,13 @@ const TaskList = () => {
 
   const deleteTask = async (id) => {
     await axios.delete(`http://localhost:5000/tasks/${id}`);
+    console.log(id);
     setTasks(tasks.filter(task => task._id !== id));
   };
 
   const markAsComplete = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/tasks/${id}`, { status: 'completed' });
+      await axios.put(`http://localhost:5000/tasks/${id}`, { status: 'completed' });
       setTasks(tasks.map(task => (task._id === id ? { ...task, status: 'completed' } : task)));
     } catch (error) {
       console.error('Failed to mark task as complete', error);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const TaskForm = () => {
   const [task, setTask] = useState({ title: '', description: '', status: 'pending', dueDate: '' });
@@ -13,7 +13,7 @@ const TaskForm = () => {
       const fetchTask = async () => {
         const res = await axios.get(`http://localhost:5000/tasks/${id}`);
         const fetchedTask = res.data;
-        // Ensure the dueDate is in the correct format for the input field
+       
         if (fetchedTask.dueDate) {
           fetchedTask.dueDate = new Date(fetchedTask.dueDate).toISOString().split('T')[0];
         }
@@ -39,10 +39,10 @@ const TaskForm = () => {
   };
 
   return (
-    <div className="container"> {/* Wrap form in container for Bootstrap spacing */}
+    <div className="container"> 
       <h1>{id ? 'Edit Task' : 'New Task'}</h1>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3"> {/* Add margin-bottom for spacing */}
+        <div className="mb-3"> 
           <label htmlFor="title" className="form-label">Title:</label>
           <input
             type="text"

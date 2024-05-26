@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { MdEdit, MdDelete } from "react-icons/md";
 import { IoMdDoneAll } from "react-icons/io";
 
@@ -32,12 +32,12 @@ const TaskList = () => {
   };
 
   return (
-    <div className="container"> {/* Wrap content in container for Bootstrap spacing */}
-      <div className="d-flex justify-content-between mb-3"> {/* Align title and link horizontally */}
+    <div className="container"> 
+      <div className="d-flex justify-content-between mb-3"> 
         <h1>Tasks</h1>
         <Link to="/new" className="btn btn-primary">Create New Task</Link>
       </div>
-      <ul className="list-group">  {/* Use Bootstrap's list-group for styling */}
+      <ul className="list-group">  
         {tasks.map(task => (
           <li key={task._id} className="list-group-item d-flex justify-content-between align-items-center">
             <div>
@@ -45,7 +45,7 @@ const TaskList = () => {
               <p>Status: {task.status}</p>
               <p>Due Date: {new Date(task.dueDate).toLocaleDateString()}</p>
             </div>
-            <div className="d-flex flex-column align-items-start"> {/* Group edit, mark as complete, and delete buttons */}
+            <div className="d-flex flex-column align-items-start"> 
               {task.status === 'completed' ? (
                 <span className="badge bg-success mb-2" style={{ fontSize: '16px' }}>Completed</span>
               ) : (
